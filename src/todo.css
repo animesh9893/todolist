@@ -7,10 +7,6 @@
 	cursor: pointer;
 }
 
-.ListItem:hover{
-
-}
-
 .deleteButton{
 	color: black;
 	font-weight: 700;

@@ -17,13 +17,21 @@ function App() {
   const [dateInput, setDateInput] = useState(null);
   const [todos, setTodos] = useState([]);
 
+  function processDateTime(dt){
+    var year = dt.substring(0,4)
+    var month = dt.substring(5,7)
+    var date = dt.substring(8,10)
+    var time = dt.substring(11,dt.length)
+    return date+"/"+month+"/"+year+" time : "+time;
+  }
+
   //function to add element to firebase
   function addTodo(e) {
+    if(todoInput==="") return;
     e.preventDefault();
-
     db.collection("todos").add({
       inprogress: true,
-      timestamp: dateInput,
+      timestamp: processDateTime(dateInput),
       todo: todoInput,
     });
     setTodoInput("");
