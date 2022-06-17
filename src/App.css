@@ -39,3 +39,17 @@
 .InputButton{
   margin-left: 10px;
 }
+/*width: "90vw", maxWidth: "500px", marginTop: "24px" */
+.ListItems{
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+
+
+
+

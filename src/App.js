@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import {db} from "./firebase_config";
 
+import TodoListItem from './Todo';
+
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -40,6 +42,7 @@ function App() {
           id: doc.id,
           todo: doc.data().todo,
           inprogress: doc.data().inprogress,
+          timestamp: doc.data().timestamp,
         }))
       );
     });
@@ -76,7 +79,16 @@ function App() {
         >Add</Button>
       </form>
 
-
+      <div className="ListItems">
+          {todos.map((todo) => (
+            <TodoListItem
+              todo={todo.todo}
+              inprogress={todo.inprogress}
+              id={todo.id}
+              timestamp={todo.timestamp}
+            />
+          ))}
+      </div>
     </div>
   );
 }
