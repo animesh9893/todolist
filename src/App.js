@@ -10,10 +10,12 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 function App() {
+  //states
   const [todoInput, setTodoInput] = useState("");
   const [dateInput, setDateInput] = useState(null);
   const [todos, setTodos] = useState([]);
 
+  //function to add element to firebase
   function addTodo(e) {
     e.preventDefault();
 
@@ -30,6 +32,7 @@ function App() {
       getTodos();
   }, []);
 
+  //get old todos
   function getTodos() {
     db.collection("todos").onSnapshot(function (querySnapshot) {
       setTodos(
@@ -57,7 +60,7 @@ function App() {
         <TextField
           style={{marginLeft:10}}
           id="datetime-local"
-          label="Next appointment"
+          label="Select Time"
           type="datetime-local"
           defaultValue="2022-06-18T10:30"
           sx={{ width: 250 }}
